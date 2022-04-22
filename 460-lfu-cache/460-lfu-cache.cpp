@@ -70,6 +70,7 @@ public:
         
         p->node_count += 1;
         nextlist->addNode(p);
+        //don't forget to update both the freqlistmap and the key map with the newly updated list and node
         freqlistmap[p->node_count] = nextlist;
         mp[p->key] = p;
         
@@ -117,6 +118,7 @@ public:
             }
             
             list->addNode(temp);
+            //don't forget to update both the freqlistmap and the key map with the newly updated list and node
             freqlistmap[minfreq] = list;
             mp[key] = temp;
         }
