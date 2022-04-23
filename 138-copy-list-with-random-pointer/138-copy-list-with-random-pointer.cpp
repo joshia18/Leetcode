@@ -17,25 +17,49 @@ public:
 class Solution {
 public:
     Node* copyRandomList(Node* head) {
-        //bruteforce way using hashmap as extra space
-        unordered_map<Node* , Node*> mp;
+        //optimal way without using any space
+        
+        if(head == NULL) return NULL;
         
         Node* temp = head;
         
+        //placing new deep copied nodes right next to the original nodes
         while(temp != NULL){
-            mp[temp] = new Node(temp->val);
-            temp = temp->next;
+            Node* p = temp;
+            Node* newnode = new Node(temp->val);
+            newnode->next = p->next;
+            p->next = newnode;
+            temp = newnode->next;
         }
         
-        temp = head;
+        Node* iter = head;
         
-        while(temp != NULL){
-            //mp[temp->next] & mp[temp->random] -> this is deep copy
-            mp[temp]->next = mp[temp->next];
-            mp[temp]->random = mp[temp->random];
-            temp = temp->next;
+        //setting the deep copied random pointers to the new deep copied nodes
+        while(iter != NULL){
+            if(iter->random){
+                iter->next->random = iter->random->next;
+            }
+            else{
+                iter->next->random = NULL;
+            }
+            
+            iter = iter->next->next;
         }
         
-        return mp[head];
+        Node* original = head;
+        Node* dcopy = head->next;
+        Node* res = dcopy;
+        
+        //separating the original list and deep copied list
+        while(original){
+            original->next = original->next->next;
+            dcopy->next = dcopy->next != NULL ? dcopy->next->next : dcopy->next;
+            original = original->next;
+            dcopy = dcopy->next;
+        }
+         
+        
+        return res;
+        
     }
 };
