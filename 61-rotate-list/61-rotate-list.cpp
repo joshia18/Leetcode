@@ -10,41 +10,39 @@
  */
 class Solution {
 public:
-    int length(ListNode* root){
-        ListNode* p = root;
         
-        int len = 0;
-        while(p){
-            len++; p = p->next;
-        }
-        
-        return len;
-    }
-    
     ListNode* rotateRight(ListNode* head, int k) {
         //brute force is o(k*n), take the last node each time and put it in the front
+        //optimal solution is making use of the circular linked list with TC (n%k)
         
         if(!head || !head->next) return head;
         
         ListNode* temp = head;
         
-        k = k%length(head);
+        ListNode* p = head;
+        ListNode* beforeNode = NULL;
         
-        while(k > 0){
-            
-            ListNode* beforelast = NULL;
-            ListNode* last = NULL;
-            
-            while(temp->next != NULL){
-                beforelast = temp;
-                temp = temp->next;
-            }
-            
-            beforelast->next = NULL;
-            temp->next = head;
-            head = temp;
-            k--;
+        int len = 0;
+        while(p){
+            len++;
+            beforeNode = p;
+            p = p->next;
+        }            
+        
+        k = k%len;
+        
+        int newlength = len - k;
+        
+        //make the given list a circular linked list by pointing the last node to the head of the list
+        beforeNode->next = head;
+        
+        while(newlength-1 > 0){
+            temp = temp->next;
+            newlength--;
         }
+        
+        head = temp->next;
+        temp->next = NULL;
         
         return head;
     }
