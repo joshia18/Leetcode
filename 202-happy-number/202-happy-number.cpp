@@ -1,27 +1,32 @@
 class Solution {
 public:
-    bool isHappy(int n) {
-        int current = n;
-        
-        unordered_set<int> seen;
-        
+    int getdigitsquare(int n){
         int sum = 0;
         
-        while(n != 1){
-            sum = 0;
-            current = n;
-            while(current != 0){
-                sum += (current%10) * (current%10);
-                current = current / 10;
+        while(n != 0){
+            sum += (n%10) * (n%10);
+            n = n/10;
+        }
+        
+        return sum;
+    }
+    
+    bool isHappy(int n) {
+        
+        //floyd cycle detection without using extra space but using recursion stack
+        int slow = n, fast = n;
+        
+        while(slow != 1 && fast != 1){
+            slow = getdigitsquare(slow);
+            fast = getdigitsquare(getdigitsquare(fast));
+            
+            //if slow == fast it forms a loop and it is not a happy number
+            if(slow == fast && slow != 1 && fast != 1){
+                return false;
             }
-            
-            if(seen.find(sum) != seen.end()) return false;
-            
-            seen.insert(sum);
-            
-            n = sum;
         }
         
         return true;
+        
     }
 };
