@@ -2,7 +2,7 @@ class Solution {
 public:
         
     string removeDuplicates(string s, int k) {
-        //brute force used string as a stack
+        //optimal solution
         
         stack<pair<char, int>> stk;
         string ans = "";
