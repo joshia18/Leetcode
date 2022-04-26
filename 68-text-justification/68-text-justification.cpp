@@ -17,7 +17,10 @@ public:
     string middlejustify(vector<string>& words, int i, int j, int diff){
         string ans = words[i];
         
+        //no of spaces to be applied between words
         int spaces = diff / (j-i-1);
+        
+        //no of extra spaces in addition to above spaces to be applied from left
         int extraspaces = diff % (j-i-1);
         
         for(int k = i+1; k < j; k++){
@@ -32,7 +35,7 @@ public:
     }
     
     vector<string> fullJustify(vector<string>& words, int maxWidth) {
-        //solved using two pointer method
+        //solved using two pointer method, time and space complexity -> o(nooflines * maxwidth)
         vector<string> ans;
         
         if(words.size() == 0) return ans;
