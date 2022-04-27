@@ -1,20 +1,13 @@
 class Solution {
 public:
     
-    int getgcd(int x, int y){
-        return y == 0 ? x : getgcd(y, x%y);
-    }
-    
     double getslope(vector<int> &p1, vector<int> &p2){
-        int x = p2[0] - p1[0];
-        int y = p2[1] - p1[1];
+        if(p1[0] == p2[0]) return (double)INT_MAX;
         
-        int gcd = getgcd(x, y);
+        int x = p2[1] - p1[1];
+        int y = p2[0] - p1[0];
         
-        x = gcd == 0 ? x / max(x, y) : x/gcd;
-        y = gcd == 0 ? y / max(x, y) : y/gcd;
-        
-        return (double)y/x;
+        return (double)x/y;
     }
     
     int maxPoints(vector<vector<int>>& points) {
