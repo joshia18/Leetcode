@@ -14,7 +14,7 @@ public:
         x = gcd == 0 ? x / max(x, y) : x/gcd;
         y = gcd == 0 ? y / max(x, y) : y/gcd;
         
-        return (double)x/y;
+        return (double)y/x;
     }
     
     int maxPoints(vector<vector<int>>& points) {
