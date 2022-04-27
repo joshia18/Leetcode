@@ -37,7 +37,7 @@ public:
                     q.push({current.first-b, 1});
                 }
                 
-                if(current.first <= 2000+b){
+                if(current.first-b <= 2000){
                     q.push({current.first+a, 0});
                 }
                 
