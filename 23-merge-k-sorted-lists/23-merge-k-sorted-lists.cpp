@@ -26,7 +26,6 @@ public:
         for(ListNode* l : lists){
             if(l == NULL) continue;
             minheap.push(l);
-            cout << l->val << endl;
         }
         
         ListNode* head = new ListNode();
