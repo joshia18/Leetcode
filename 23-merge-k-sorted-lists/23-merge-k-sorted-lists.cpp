@@ -8,46 +8,70 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
-struct comparenodes{
-    //operator method overloading
-    bool operator()(ListNode* l1, ListNode* l2){
-        return l1->val > l2->val;
-    }
-};
+
 
 class Solution {
 public:
-    ListNode* mergeKLists(vector<ListNode*>& lists) {
-        //using priority queue minheap method
+    ListNode* merge(ListNode* first, ListNode* second){
+        ListNode* third = nullptr;
+        ListNode* last = nullptr;
         
-        priority_queue<ListNode*, vector<ListNode*>, comparenodes> minheap;
+        if(!first && !second) return nullptr; if(!first) return second; if(!second) return first;
         
-        //at a given point of time, we store only the starting address of all the nodes in the prority queue
-        for(ListNode* l : lists){
-            if(l == NULL) continue;
-            minheap.push(l);
+        if(first->val < second->val){
+            third = first;
+            last = first;
+            first = first->next;
+            last->next = nullptr;
+        }
+        else{
+            third = second;
+            last = second;
+            second = second->next;
+            last->next = nullptr;
         }
         
-        ListNode* head = new ListNode();
-        ListNode* iter = head;
+        while(first && second){
+            if(first->val < second->val){
+                last->next = first;
+                last = first;
+                first = first->next;
+                last->next = nullptr;
+            }
+            else{
+                last->next = second;
+                last = second;
+                second = second->next;
+                last->next = nullptr;
+            }
+        }
         
-        while(!minheap.empty()){
-            ListNode* node = minheap.top();
-            minheap.pop();
+        if(first) last->next = first;
+        if(second) last->next = second;
+        
+        return third;
+    }
+    
+    ListNode* mergeKLists(vector<ListNode*>& lists) {
+        //using merge sort
+        if(lists.size() == 0) return nullptr;
+        
+        int n = lists.size();
+        
+        while(lists.size() != 1){
+            n = lists.size();
             
-            iter->next = node;
-            iter = iter->next;
+            vector<ListNode*> temp;
             
-            ListNode* next = node->next;
-            
-            if(next != NULL){
-                minheap.push(next);
+            for(int i = 0; i+1 < n; i+=2){
+                temp.push_back(merge(lists[i], lists[i+1]));
             }
             
-            
+            if(n%2 != 0 && n!=1) temp.push_back(lists[lists.size()-1]);
+            lists = temp;
         }
         
-        return head->next;
+        return lists[0];
         
     }
 };
