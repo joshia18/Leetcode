@@ -16,13 +16,6 @@ public:
             maxi = max(maxi, i.second);
         }
         
-//         for(auto i : charlist){
-//             for(auto j : i.second) {cout << j << " ";}
-//             cout << endl;
-//         }
-        
-//         cout << maxi;
-        
         string ans = "";
         
         for(int i = maxi; i >= 0; i--){
