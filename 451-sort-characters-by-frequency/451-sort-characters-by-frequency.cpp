@@ -7,25 +7,36 @@ public:
             mp[c]++;
         }
         
-        priority_queue<pair<int, char>> pq;
+        unordered_map<int, vector<char>> charlist;
+        int maxi = 0;
         
         for(auto i : mp){
-            pq.push({i.second, i.first});
+            char c = i.first;
+            charlist[i.second].push_back(c);
+            maxi = max(maxi, i.second);
         }
+        
+//         for(auto i : charlist){
+//             for(auto j : i.second) {cout << j << " ";}
+//             cout << endl;
+//         }
+        
+//         cout << maxi;
         
         string ans = "";
         
-        while(!pq.empty()){
-            int num = pq.top().first;
-            char c = pq.top().second;
-            pq.pop();
+        for(int i = maxi; i >= 0; i--){
+            if(charlist.find(i) == charlist.end()) continue;
             
-            while(num > 0){
-                ans += c;
-                num--;
+            for(char c : charlist[i]){
+                int num = i;
+                while(num > 0){
+                    ans += c;
+                    num--;
+                }
             }
         }
-            
+        
         return ans;
         
     }
