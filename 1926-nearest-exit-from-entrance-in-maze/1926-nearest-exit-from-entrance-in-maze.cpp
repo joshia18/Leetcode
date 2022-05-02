@@ -16,9 +16,9 @@ public:
                 qu.pop();
                 
                 //to not visit the same cell again
-                if(maze[p][q] == '*') continue;
+                if(maze[p][q] == '+') continue;
                 
-                maze[p][q] = '*';
+                maze[p][q] = '+';
                 
                 for(auto j : directions){
                     int x = p + j[0];
