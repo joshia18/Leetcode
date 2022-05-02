@@ -15,6 +15,7 @@ public:
                 auto [p, q] = qu.front();
                 qu.pop();
                 
+                //to not visit the same cell again
                 if(maze[p][q] == '*') continue;
                 
                 maze[p][q] = '*';
