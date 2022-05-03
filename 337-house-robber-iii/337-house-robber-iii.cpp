@@ -19,7 +19,7 @@ public:
         
         //if we rob the root we cannot rob the houses connected to it, so we have to rob the houses connected to root->left and root->right
         //as for every node we make two calls, the time complexity is o(2^n) exponential
-        //as there is repeating subproblems for each node, we can do memoizaton
+        //as there is repeating subproblems for each node, we can do memoizaton, so we'll visit each node only once so, TC is o(n)
         
         if(mp.find(root) != mp.end()) return mp[root];
         
