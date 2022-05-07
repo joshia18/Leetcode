@@ -5,7 +5,6 @@ public:
         //but in this case we consider subarray of size 1 also so in that case we need to use the formula n(n-1)/2 for the number of mods that we got, where n is the number of mods
         //the reason for formula is
         //if mod = 4 is found in 3 indices/places, here n = 3, the subarray between any two indices is a valid subarray
-        //if the mod is 0, then n + n(n-1)/2
         int count = 0, sum = 0;
         
         if(nums.size() == 1){
