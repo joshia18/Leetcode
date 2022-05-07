@@ -34,6 +34,7 @@ public:
     bool possibleBipartition(int n, vector<vector<int>>& dislikes) {
         vector<vector<int>> adj(n+1);
         
+        //form undirected graph, otherwise this would fail
         for(auto &i : dislikes){
             adj[i[0]].push_back(i[1]);
             adj[i[1]].push_back(i[0]);
