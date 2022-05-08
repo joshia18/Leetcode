@@ -25,7 +25,7 @@ public:
             minheap.push(maxheap.top());
             maxheap.pop();
         }
-        else if(minheap.size() > maxheap.size()+1){
+        else if(minheap.size() > maxheap.size()){
             maxheap.push(minheap.top());
             minheap.pop();
         }
