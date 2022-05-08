@@ -1,6 +1,9 @@
 class Solution {
 public:
     void balance(multiset<int> &minheap, multiset<int, greater<int>> &maxheap){
+        //inorder to get first half of array in maxheap and second half in minheap,
+        //i want the maxheap.size() == minheap.size() OR
+        //           maxheap.size() == minheap.size()+1
         if(minheap.size() > maxheap.size()){
             maxheap.insert(*(minheap.begin()));
             minheap.erase(minheap.begin());
