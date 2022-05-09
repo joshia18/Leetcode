@@ -24,6 +24,7 @@ class Solution{
                 farthest = max(farthest, i + arr[i]);
             }
             
+            //IMPORTANT: this is an important point to consider here if an element 0 stopping us to get to the last element of array
             if(farthest == r) return -1;
             
             l = r+1;
