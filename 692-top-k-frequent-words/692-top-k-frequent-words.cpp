@@ -1,8 +1,20 @@
+struct compare{
+    bool operator()(pair<int, string> &a, pair<int, string> &b){
+        
+        //as it is a minheap we are creating a.first < b.first
+        //if a.first == b.first, then return a.second > b.second, have to be IMPORTANT here
+        
+        return a.first < b.first || ((a.first == b.first) && a.second > b.second);
+        
+    }
+};
+
 class Solution {
 public:
     vector<string> topKFrequent(vector<string>& words, int k) {
         //create minheap
-        priority_queue<pair<int, string>, vector<pair<int, string>>, greater<pair<int, string>>> pq;
+        //another method using comparator in priority queue
+        priority_queue<pair<int, string>, vector<pair<int, string>>, compare> pq;
         unordered_map<string, int> mp;
         
         for(string &i : words){
@@ -15,23 +27,13 @@ public:
         
         vector<string> ans;
         
-        while(!pq.empty()){
-            vector<string> temp;
-            
-            int freq = pq.top().first;
-            while(!pq.empty() && pq.top().first == freq){
-                temp.push_back(pq.top().second);
-                pq.pop();
-            }
-            
-            //cout << temp.size() << " ";
-            
-            if(temp.size() > 1) sort(temp.begin(), temp.end());
-            
-            if(temp.size() > 0) ans.insert(ans.begin(), temp.begin(), temp.end());
-            
+        while(!pq.empty() && k > 0){
+            ans.push_back(pq.top().second);
+            pq.pop();
+            k--;
         }
         
-        return vector<string>(ans.begin(), ans.begin()+k);
+        
+        return ans;
     }
 };
