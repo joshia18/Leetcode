@@ -11,6 +11,7 @@ class Solution{
     vector<int> printClosest(int arr[], int brr[], int n, int m, int x) {
         //traverse the 1st array from left to right and the second array from right to left
         //see both arrays may have different sizes i guss
+        //so basically it is a TWO POINTER METHOD
         
         int l = 0, r = m-1;
         
