@@ -18,7 +18,7 @@ public:
                     //dp[1][k] = 0;
                 }
             }
-            
+                        
             for(int j = 0; j < c; j++){
                            
                 if(i == 0){
