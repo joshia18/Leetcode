@@ -12,19 +12,6 @@ public:
             return false;
         }
         
-        //if k == 0 all the elements in the array should be zero, anyway k will not be 0 as per the constraints
-        //it is already given that there is no negative numbers in nums
-        if(k == 0){
-            for(int i = 0; i < nums.size(); i++){
-                if(nums[i] == 0){
-                    return true;
-                }
-                else{
-                    return false;
-                }
-            }
-        }
-        
         unordered_map<int, int> mp;
         mp.insert({0, -1});//this needs to be done to detect future key = 0 
         int sum = 0;
