@@ -14,18 +14,15 @@ class Solution{
     vector<int> leaders(int a[], int n){
         vector<int> ans;
         
+        //doing this without stack
+        int maxelement = a[n-1];
         ans.push_back(a[n-1]);
-        stack<int> stk;
-        stk.push(a[n-1]);
         
-        for(int i = n-2; i >= 0; i--){
-            
-            while(!stk.empty() && a[i] >= stk.top()) stk.pop();
-            
-            if(stk.empty()) ans.push_back(a[i]);
-            
-            stk.push(a[i]);
-            
+        for(int i = n-2; i>=0; i--){
+            if(a[i] >= maxelement){
+                ans.push_back(a[i]);
+                maxelement = a[i];
+            }
         }
         
         reverse(ans.begin(), ans.end());
