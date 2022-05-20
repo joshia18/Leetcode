@@ -17,12 +17,10 @@ public:
         s += '(';
         s += to_string(root->val);
         
+        //if left is null and right is not null add empty parantheses
         if(root->left == nullptr && root->right != nullptr){
             s += "()";
         }
-        // else if(root->right == nullptr){
-        //     s += "()";
-        // }
         
         helper(root->left, s);
         helper(root->right, s);
