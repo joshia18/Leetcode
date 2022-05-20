@@ -1,10 +1,10 @@
 class Solution {
 public:
+    vector<vector<int>> dir = {{-1, 0}, {0, -1}, {1, 0}, {0, 1}};
+    
     int liphelper(vector<vector<int>>& matrix, int i, int j, vector<vector<int>>& mem){
         
         if(mem[i][j] != -1) return mem[i][j];
-        
-        vector<vector<int>> dir = {{-1, 0}, {0, -1}, {1, 0}, {0, 1}};
         
         int max_inc_path  = 0;
         
