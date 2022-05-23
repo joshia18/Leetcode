@@ -21,13 +21,12 @@ public:
 //     }
     
     int count(string &s, int number){
-        int z = 0, o = 0;
+        int z = 0;
         for(char c : s){
             if(c == '0') z++;
-            else o++;
         }
         
-        if(number) return o;
+        if(number) return s.size()-z;
         return z;
     }
     
