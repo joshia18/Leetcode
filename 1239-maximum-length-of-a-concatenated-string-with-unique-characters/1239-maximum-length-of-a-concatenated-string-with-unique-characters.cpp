@@ -1,15 +1,15 @@
 class Solution {
 public:
     
-    int helper(int index, vector<string>& arr, unordered_map<char, int> mp){
+    int helper(int index, vector<string>& arr, vector<int> mp){
         
         if(index >= arr.size()) return 0;
         
         int flag = 0;
         
         for(char c : arr[index]){
-            mp[c]++;
-            if(mp[c] > 1){
+            mp[c-'a']++;
+            if(mp[c-'a'] > 1){
                 flag = 1;
             }
         }
@@ -19,7 +19,7 @@ public:
         if(flag != 1) take = arr[index].size() + helper(index+1, arr, mp);
         
         for(char c : arr[index]){
-            mp[c]--;
+            mp[c-'a']--;
         }
         
         int nottake = helper(index+1, arr, mp);
@@ -29,7 +29,7 @@ public:
     }
     
     int maxLength(vector<string>& arr) {
-        unordered_map<char, int> mp;
+        vector<int> mp(26, 0);
         return helper(0, arr, mp);
     }
 };
