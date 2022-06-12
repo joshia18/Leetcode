@@ -1,6 +1,6 @@
 class Solution {
 public:
-    unordered_map<string, int> mp;
+//     unordered_map<string, int> mp;
     
 //     int helper(vector<int>& cuts, int i, int j){
 //         if(i > j) return 0;
@@ -52,5 +52,7 @@ public:
         }
         
         return dp[1][c];
+        
+        //return helper(cuts, 1, c);
     }
 };
