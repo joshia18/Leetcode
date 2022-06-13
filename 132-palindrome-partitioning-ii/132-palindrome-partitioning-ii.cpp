@@ -11,6 +11,7 @@ public:
     }
     
     int helper(int index, string &s, vector<int> &dp){
+        //base case
         if(index == s.size()) return 0;
         
         if(dp[index] != -1) return dp[index];
