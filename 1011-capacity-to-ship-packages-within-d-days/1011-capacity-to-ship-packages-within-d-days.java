@@ -7,17 +7,16 @@ class Solution {
             min = Math.max(min, i);
         }
         
-        int ans = 0;
+        int ans = Integer.MAX_VALUE;
         while(min <= max){
             int mid = min + (max-min)/2;
-            int daysRequired = numOfDaysRequired(weights, mid);
             
-            if(daysRequired > days){
-                min = mid+1;
+            if(numOfDaysRequired(weights, mid, days)){
+                ans = Math.min(ans, mid);
+                max = mid-1;
             }
             else{
-                ans = mid;
-                max = mid-1;
+                min = mid+1;
             }
             
         }
@@ -26,7 +25,7 @@ class Solution {
         
     }
     
-    public int numOfDaysRequired(int[] weights, int capacity){
+    public boolean numOfDaysRequired(int[] weights, int capacity, int days){
         int daysRequired = 1;
         int current = 0;
         
@@ -38,6 +37,6 @@ class Solution {
             }
         }
         
-        return daysRequired;
+        return daysRequired <= days;
     }
 }
