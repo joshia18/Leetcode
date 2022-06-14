@@ -12,7 +12,8 @@ class Solution {
             int mid = min + (max-min)/2;
             
             if(numOfDaysRequired(weights, mid, days)){
-                ans = Math.min(ans, mid);
+                //ans = Math.min(ans, mid); OR
+                ans = mid;
                 max = mid-1;
             }
             else{
