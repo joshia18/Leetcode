@@ -1,10 +1,8 @@
 class Solution {
 public:
     vector<vector<int>> updateMatrix(vector<vector<int>>& mat) {
-        //inplace dp like without using extra space
+        //inplace dp like without using extra space for visited
         int r = mat.size(), c = mat[0].size();
-        
-        vector<vector<bool>> visited(r, vector<bool>(c, false));
         
         for(int i = 0; i < r; i++){
             for(int j = 0; j < c; j++){
