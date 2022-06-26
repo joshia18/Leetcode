@@ -13,6 +13,8 @@ public:
             mp[temp]++;
         }
         
+        for(auto i : mp) cout << i.first << ": " << i.second << endl;
+        
         if(mp[0]%2 != 0) return false;
         
         for(auto i : mp){
