@@ -13,8 +13,7 @@ public:
         if(lastjump <= 0 || element > last) return false;
         
         if(mp1[element]){
-            return mp2[{element, lastjump}]= helper(element+lastjump, lastjump, mp1, mp2) || helper(element+lastjump-1, lastjump-1, mp1, mp2) ||
-                   helper(element+lastjump+1, lastjump+1, mp1, mp2);
+            return mp2[{element, lastjump}] = helper(element+lastjump, lastjump, mp1, mp2) || helper(element+lastjump-1, lastjump-1, mp1, mp2)                                               || helper(element+lastjump+1, lastjump+1, mp1, mp2);
         }
         else{
             return false;
