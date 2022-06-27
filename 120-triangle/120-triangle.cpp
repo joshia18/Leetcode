@@ -25,8 +25,8 @@ public:
                 else{
                     
                     int down = 1e6, diagonal = 1e6;
-                    if(i+1 <= r-1) down = triangle[i][j] + dp[i+1][j];
-                    if(j+1 <= c-1) diagonal = triangle[i][j] + dp[i+1][j+1];
+                    down = triangle[i][j] + dp[i+1][j];
+                    diagonal = triangle[i][j] + dp[i+1][j+1];
                     
                     dp[i][j] = min(down, diagonal);
                 }
