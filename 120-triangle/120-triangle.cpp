@@ -19,6 +19,7 @@ public:
         vector<vector<int>> dp(r, vector<int>(c, 0));
         
         for(int i = r-1; i >= 0; i--){
+            //each row is of differernt sizes triangle[i].size()-1 => no of columns
             for(int j = triangle[i].size()-1; j >= 0; j--){
                 if(i == r-1) dp[r-1][j] = triangle[r-1][j];
                 else{
