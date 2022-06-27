@@ -1,45 +1,37 @@
 class Solution {
 public:
-    vector<vector<int>> dp;
-    
-    int helper(int idx, int jump, vector<int>& stones){
-        
-        if(idx >= stones.size()-1) return 1;
-        
-        if(dp[idx][jump] != -1) return dp[idx][jump];
-        
-        int flag = 0;
-        
-        for(int i = idx+1; i < stones.size(); i++){
-            
-            if(stones[i] - stones[idx] > jump+1) break;
-            
-            //if difference is same as jump do not increment the humo
-            if(stones[i] - stones[idx] == jump){
-                if(helper(i, jump, stones)) flag = 1;
-            }
-            
-            if(stones[i] - stones[idx] == jump+1){
-                if(helper(i, jump+1, stones)) flag = 1;
-            }
-            
-            if(stones[i] - stones[idx] == jump-1){
-                if(helper(i, jump-1, stones)) flag = 1;
-            }
-            
+    int last;
+    bool helper(int element, int lastjump, map<int, int> &mp1, map<pair<int, int>, int> &mp2){
+        if(element == last){
+            return true;
         }
         
-        return dp[idx][jump] = flag;
+        if(mp2.find({element, lastjump}) != mp2.end()) return mp2[{element, lastjump}];
         
+        //if the lastjump is 0 or less than 0, it might result in frog going backwards in helper(element+lastjump-1, lastjump-1, mp1, mp2)
+        //if it is negative, frog will go backwards in helper(element+lastjump, lastjump, mp1, mp2)
+        if(lastjump <= 0 || element > last) return false;
+        
+        if(mp1[element]){
+            return mp2[{element, lastjump}]= helper(element+lastjump, lastjump, mp1, mp2) || helper(element+lastjump-1, lastjump-1, mp1, mp2) ||
+                   helper(element+lastjump+1, lastjump+1, mp1, mp2);
+        }
+        else{
+            return false;
+        }
     }
     
     bool canCross(vector<int>& stones) {
-        dp.resize(2001, vector<int>(2001, -1));
+        int n = stones.size();
+        //last stores the last element in the given sorted array
+        last = stones[n-1];
+        map<int, int> mp1;
+        map<pair<int, int>, int> mp2;
         
-        // If 2nd stone is not rechable in 1 unit jump then return false.
-        if(stones[1] - stones[0] > 1) return false;
+        for(int i : stones) mp1[i] = 1;
         
-        //start from 1st index
-        return helper(1, 1, stones);
+        if(stones[1] == 1) return helper(1,1,mp1, mp2);
+        
+        return false;
     }
 };
