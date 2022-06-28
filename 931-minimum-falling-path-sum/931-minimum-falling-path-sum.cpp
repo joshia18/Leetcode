@@ -26,7 +26,6 @@ public:
         
         for(int i = 1; i < r; i++){
             for(int j = 0; j < c; j++){
-                cout << i << " " << j << endl;
                 int s = 1e6, ld = 1e6, rd = 1e6;
                 s = matrix[i][j] + dp[i-1][j];
                 if(j-1 >= 0) ld = matrix[i][j] + dp[i-1][j-1];
