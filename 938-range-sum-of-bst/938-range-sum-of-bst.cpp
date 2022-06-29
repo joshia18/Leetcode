@@ -13,17 +13,11 @@ class Solution {
 public:
     int preorder(TreeNode* p, int l, int h){
         if(p == nullptr) return 0;
-        if(p->val < l) preorder(p->right, l, h);
-        if(p->val > h) preorder(p->left, l, h);
-         
-        int sum = 0;
         
-        if(p->val >= l && p->val <= h) sum += p->val;
+        if(p->val >= l && p->val <= h) return p->val + preorder(p->left, l, h) + preorder(p->right, l, h);
         
-        sum += preorder(p->left, l, h);
-        sum += preorder(p->right, l, h);
-        
-        return sum;
+        if(p->val < l) return preorder(p->right, l, h);
+        return preorder(p->left, l, h);
         
     }
     
