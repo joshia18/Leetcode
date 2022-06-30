@@ -16,7 +16,7 @@ public:
         }
         else{
             if(val < mini){
-                stk.push(2*val*1LL - mini);
+                stk.push(2*val - mini);
                 mini = val;
             }
             else{
