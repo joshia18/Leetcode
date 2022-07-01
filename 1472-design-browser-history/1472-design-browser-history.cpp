@@ -29,7 +29,7 @@ public:
     }
     
     string back(int steps) {
-        while((currnode->prev->prev) && steps > 0 && currnode->prev != head){
+        while((currnode->prev) && steps > 0 && currnode->prev != head){
             currnode = currnode->prev;
             steps--;
         }
@@ -38,7 +38,7 @@ public:
     }
     
     string forward(int steps) {
-        while((currnode->next->next) && steps > 0 && currnode->next != tail){
+        while((currnode->next) && steps > 0 && currnode->next != tail){
             currnode = currnode->next;
             steps--;
         }
