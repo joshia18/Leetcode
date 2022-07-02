@@ -25,17 +25,16 @@ public:
                         blow = true;
                         break;
                     }
-                    if(stk.top() == -i){
+                    else if(stk.top() == -i){
                         blow = true;
                         stk.pop();
                         break;
                     }
-                    if(stk.top() < -i){
+                    else{
                         stk.pop();
                     }
                 }
-                
-                //if blow is false, the current asteroid i has not bloasted, add it to the ans array
+                //if blow is false, the current asteroid i has not blasted, add it to the ans array
                 if(blow == false) ans.push_back(i);
             }
             
