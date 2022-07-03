@@ -24,7 +24,7 @@ public:
     bool wordBreak(string s, vector<string>& wordDict) {
         unordered_set<string> st;
         
-        for(string i : wordDict){
+        for(string i : wordDict){   
             st.insert(i);
         }
         
