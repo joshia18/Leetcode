@@ -2,6 +2,11 @@ class Solution {
 public:
     int findLength(vector<int>& nums1, vector<int>& nums2) {
         //another o(1) space solution
+//         This method uses two nested loops to solve.
+
+//         The first for-loop compares nums1 at index 0 with the entire nums2 of nums2[0,...len2-1], then proceed to A at index 1 with the entire string of B[0,...,len2-1]. The two conditions of the inner loop is to prevent going out of bounds.
+
+//         Similarly, the second nested loop serves the same purpose but for nums2 at index 0... all the way to len2-1.
         
         int len1 = nums1.size(), len2 = nums2.size();
         
