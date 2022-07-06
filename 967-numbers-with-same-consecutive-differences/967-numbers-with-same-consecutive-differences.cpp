@@ -21,6 +21,8 @@ public:
     vector<int> numsSameConsecDiff(int n, int k) {
         vector<int> ans;
         
+        //unorderd_map<string, int> dp;
+        
         for(int i = 1;i <= 9; i++){
             helper(i, n-1, k, ans);
         }
