@@ -1,20 +1,37 @@
 class Solution {
 public:
     int findLength(vector<int>& nums1, vector<int>& nums2) {
-        vector<vector<int>> dp(nums1.size()+1, vector<int>(nums2.size()+1, 0));
+        //another o(1) space solution
+        //first compare all substrings of
+        
+        int len1 = nums1.size(), len2 = nums2.size();
         
         int ans = 0;
         
-        for(int i = 1; i <= nums1.size(); i++){
-            for(int j = 1; j <= nums2.size(); j++){
-                if(nums1[i-1] == nums2[j-1]){
-                    dp[i][j] = 1 + dp[i-1][j-1];
+        for(int i = 0; i < len1; i++){
+            int temp = 0;
+            for(int j = i, k = 0; j < len1 && k < len2; j++, k++){
+                if(nums1[j] == nums2[k]){
+                    temp++;
+                    ans = max(ans, temp);
                 }
                 else{
-                    dp[i][j] = 0;
+                    temp = 0;
                 }
-                
-                ans = max(ans, dp[i][j]);
+            }
+        }
+        
+        for(int i = 0; i < len2; i++){
+            int temp = 0;
+            for(int j = i, k = 0; j < len2 && k < len1; j++, k++){
+                //another difference here nums2[j] == nums1[k]
+                if(nums2[j] == nums1[k]){
+                    temp++;
+                    ans = max(ans, temp);
+                }
+                else{
+                    temp = 0;
+                }
             }
         }
         
