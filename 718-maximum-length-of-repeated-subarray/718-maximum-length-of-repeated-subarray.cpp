@@ -2,7 +2,6 @@ class Solution {
 public:
     int findLength(vector<int>& nums1, vector<int>& nums2) {
         //another o(1) space solution
-        //first compare all substrings of
         
         int len1 = nums1.size(), len2 = nums2.size();
         
