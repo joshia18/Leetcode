@@ -1,16 +1,11 @@
 class Solution {
 public:
     int helper(string &s, int start, int end, vector<vector<int>> &dp){
-        if(dp[start][end] != -1){
-            return dp[start][end];
-        }
+        if(start == end) return 1;
         
-        if(start > end){
-            return 0;
-        }
-        if(start == end){
-            return 1;
-        }
+        if(start > end) return 0;
+        
+        if(dp[start][end] != -1) return dp[start][end];
         
         int ans = 0;
         
@@ -18,7 +13,7 @@ public:
             ans = 2 + helper(s, start+1, end-1, dp);
         }
         else{
-            ans = max(helper(s, start + 1, end, dp), helper(s, start, end - 1, dp));
+            ans = max(helper(s, start+1, end, dp), helper(s, start, end-1, dp));
         }
         
         return dp[start][end] = ans;
