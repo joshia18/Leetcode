@@ -22,6 +22,7 @@ public:
         int n = coins.size();
         
         //vector<vector<int>> dp(n, vector<int>(amount+1, 0));
+        //single array optimization
         vector<int> prev(amount+1, 0);
         
         //here it is i%coins[0] not amount%coins[0] -> IMPORTANT
