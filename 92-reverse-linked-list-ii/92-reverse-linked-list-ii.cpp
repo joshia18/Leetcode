@@ -40,7 +40,7 @@ public:
         }
         
         //now p will be at the next node after end of the reversed list, so assign the end of reversed list to p
-        //the start node stored before will be the end node after reversing, so assign its next to p
+        //the start node stored before will be the end node after reversing, so assign its next to current p
         if(p) start->next = p;
         if(temp) temp->next = q;
         
