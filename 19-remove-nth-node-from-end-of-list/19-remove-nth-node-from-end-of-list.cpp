@@ -20,15 +20,15 @@ public:
             return head;
         }
         
-        if(n == 1){
-            while(p->next != NULL){
-                q = p;
-                p = p->next;
-            }
-            q->next = p->next;
-            delete p;          
-            return head;
-        }
+        // if(n == 1){
+        //     while(p->next != NULL){
+        //         q = p;
+        //         p = p->next;
+        //     }
+        //     q->next = p->next;
+        //     delete p;          
+        //     return head;
+        // }
         
         while(p != NULL){
             count++;
