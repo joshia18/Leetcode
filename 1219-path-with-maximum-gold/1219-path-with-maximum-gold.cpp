@@ -14,8 +14,8 @@ public:
         right = grid[i][j] + helper(i, j+1, grid, visited);
         left = grid[i][j] + helper(i, j-1, grid, visited);
         
+        //this visited[i][j] = 0 is mandatory here as it is returned from this particular place, it needs to be marked as not visited
         visited[i][j] = 0;
-        
         
         return max({up, down, right, left});
     }
