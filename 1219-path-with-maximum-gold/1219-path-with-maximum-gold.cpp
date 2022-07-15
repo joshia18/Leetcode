@@ -24,11 +24,12 @@ public:
         int ans = INT_MIN;
         
         int r = grid.size(), c = grid[0].size();
-        vector<vector<int>> visited(r, vector<int>(c, 0));
+        
         
         for(int i = 0; i < r; i++){
             for(int j = 0; j < c; j++){
                 if(grid[i][j] != 0){
+                    vector<vector<int>> visited(r, vector<int>(c, 0));
                     int temp = helper(i, j, grid, visited);
                     ans = max(ans, temp);
                 }
