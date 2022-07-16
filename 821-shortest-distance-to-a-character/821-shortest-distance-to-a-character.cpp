@@ -1,6 +1,7 @@
 class Solution {
 public:
     vector<int> shortestToChar(string s, char c) {
+        //set all values to INT_MAX initially for better uage
         vector<int> ans(s.size(), INT_MAX);
         
         int l = 0, r = 0;
