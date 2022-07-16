@@ -21,8 +21,6 @@ public:
            r++;
         }
         
-        ans[n-1] = INT_MAX;
-        
         r = s.size()-1, l = s.size()-1;
         
         //another same traversal from the last index of string s
