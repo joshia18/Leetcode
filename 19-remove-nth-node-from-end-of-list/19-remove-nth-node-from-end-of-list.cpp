@@ -30,30 +30,51 @@ public:
         //     return head;
         // }
         
-        while(p != NULL){
-            count++;
-            p = p->next;
-        }
+        //this method involves counting the number of elements first and then deleting, there is another method
+//         while(p != NULL){
+//             count++;
+//             p = p->next;
+//         }
                 
-        p = head;
-        q = NULL;
-        n = n-1;
+//         p = head;
+//         q = NULL;
+//         n = n-1;
         
-        int todelete = count-n;
+//         int todelete = count-n;
         
-        if(todelete == 1){
-            head = head->next;
-            return head;
+//         if(todelete == 1){
+//             head = head->next;
+//             return head;
+//         }
+        
+//         for(int i = 0; i < todelete-1; i++){
+//             q = p;
+//             p = p->next;
+//         }
+        
+//         q->next = p->next;
+//         delete p;
+        
+//         return head;
+        
+        //another method
+        ListNode* node = new ListNode(0);
+        node->next = head;
+        //careful left is assigned to node
+        ListNode* left = node;
+        ListNode* right = head;
+        
+        while(n--){
+            right = right->next;
         }
         
-        for(int i = 0; i < todelete-1; i++){
-            q = p;
-            p = p->next;
+        while(right){
+            left = left->next;
+            right = right->next;
         }
         
-        q->next = p->next;
-        delete p;
+        left->next = left->next->next;
         
-        return head;
+        return node->next;
     }
 };
