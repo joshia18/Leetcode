@@ -1,7 +1,7 @@
 class Solution {
 public:
     vector<int> shortestToChar(string s, char c) {
-        vector<int> ans(s.size(), 0);
+        vector<int> ans(s.size(), INT_MAX);
         
         int l = 0, r = 0;
         
@@ -29,12 +29,7 @@ public:
         while(r >= 0){
             if(s[r] == c){
                 while(r <= l){
-                    if(s[l] == c){
-                        ans[l] = 0;
-                    }
-                    else{
-                        ans[l] = ans[l] == 0 ? l-r : min(ans[l], l-r);
-                    }
+                    ans[l] = min(ans[l], l-r);
                     l--;
                 }
             }
