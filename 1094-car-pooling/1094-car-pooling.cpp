@@ -1,20 +1,20 @@
 class Solution {
 public:
     bool carPooling(vector<vector<int>>& trips, int capacity) {
-        //naive approach
-        //this condition 0 <= fromi < toi <= 1000 represents that there can be 1000 unique locations
-        //using an array of size 1001, we count the number of passengers while travelling across locations
+        //another apprach with the same array of size 1001
+        
         vector<int> count(1001, 0);
-        int ans = 0;
         
         for(auto &trip : trips){
-            //i < trip[2] as passengers are dropped on this location
-            for(int i = trip[1]; i < trip[2]; i++){
-                count[i] += trip[0];
-                ans = max(ans, count[i]);
-            }
+            count[trip[1]] += trip[0];
+            count[trip[2]] -= trip[0];
         }
         
-        return ans <= capacity;
+        for(int &i : count){
+            capacity -= i;
+            if(capacity < 0) return false;
+        }
+        
+        return true;
     }
 };
