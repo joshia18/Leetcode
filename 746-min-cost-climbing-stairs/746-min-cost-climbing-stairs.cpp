@@ -27,18 +27,24 @@ public:
         
 //         return min(step1, step2);
         
-        vector<int> dp(n+2, -1);
-        dp[n] = 0;
-        dp[n+1] = 0;
+        // vector<int> dp(n+2, -1);
+        // dp[n] = 0;
+        // dp[n+1] = 0;
+        
+        //space optmization
+        int step1 = 0, step2 = 0;
         
         for(int i = n-1; i >= 0; i--){
             
-            int one = cost[i] + dp[i+1];
-            int two = cost[i] + dp[i+2];
+            int one = cost[i] + step1;
+            int two = cost[i] + step2;
         
-            dp[i] = min(one, two);
+            int temp = min(one, two);
+            step1 = step2;
+            step2 = temp;
         }
         
-        return min(dp[0], dp[1]);
+        //return min(dp[0], dp[1]);
+        return min(step1, step2);
     }
 };
