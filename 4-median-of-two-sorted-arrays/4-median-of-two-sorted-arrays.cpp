@@ -16,6 +16,9 @@ public:
             int cut1 = (low+high)/2;
             
             //this is important here for odd n cases
+            //if total length(n1+n2) = 10, i want 5 elements in each half
+            //if total = 11, then i want 6 in left half and 5 in right half
+            //this formula (n1+n2+1)/2 - cut1 helps in such odd cases
             int cut2 = (n1+n2+1)/2 - cut1;
             
             int left1 = cut1 == 0 ? INT_MIN : nums1[cut1-1];
