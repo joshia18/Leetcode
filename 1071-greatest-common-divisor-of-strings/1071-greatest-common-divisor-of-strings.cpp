@@ -1,9 +1,9 @@
 class Solution {
 public:
     string gcdOfStrings(string str1, string str2) {
-        if(str1.size() >= str2.size()){
-            swap(str1, str2);
-        }
+        // if(str1.size() >= str2.size()){
+        //     swap(str1, str2);
+        // }
         
         if(str1.compare(str2) == 0) return str1;
         else if(str1.size() == str2.size()) return "";
